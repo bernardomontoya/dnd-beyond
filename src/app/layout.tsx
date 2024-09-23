@@ -1,7 +1,6 @@
 import { Roboto_Mono } from "next/font/google";
 import type { Metadata } from "next";
 
-import { StyledComponentsRegistry } from "@/lib/registry";
 import "./globals.css";
 
 const robotoMono = Roboto_Mono({
@@ -21,9 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={robotoMono.className}>
-      <body>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
