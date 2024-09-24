@@ -31,6 +31,7 @@ export const Rune = ({ isActive, talent, onClick }: RuneProps) => {
         alt={talent.name}
         src={icons.src}
         style={{ objectPosition: `-${x}px -${y}px` }}
+        draggable={false}
       />
     </button>
   );

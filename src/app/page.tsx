@@ -52,6 +52,9 @@ export default function Home() {
     } else {
       setPointsSpent([...pointsSpent, id]);
     }
+
+    // Clear the error message
+    setError("");
   };
 
   useEffect(() => {
