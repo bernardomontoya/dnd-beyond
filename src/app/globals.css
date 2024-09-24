@@ -5,6 +5,9 @@
   --secondaryText: #6facea;
   --accent: #6facea;
   --highlight: #ff7a00;
+
+  --short-transition: 0.1s all ease-in-out;
+  --medium-transition: 0.3s all ease-in-out;
 }
 
 html,

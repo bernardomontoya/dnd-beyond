@@ -17,7 +17,7 @@
 .label {
   color: var(--primaryText);
   font-size: 1rem;
-  transition: 0.1s all ease-in-out;
+  transition: var(--short-transition);
 }
 
 .labelComplete {
