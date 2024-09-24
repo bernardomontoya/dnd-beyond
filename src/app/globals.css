@@ -1,6 +1,8 @@
 :root {
   --background: #0a0d0e;
   --foreground: #191a1c;
+  --primaryText: #ffffff;
+  --secondaryText: #374e62;
 }
 
 html,

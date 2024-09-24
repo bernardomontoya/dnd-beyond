@@ -1,0 +1,16 @@
+.talentPath {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.talentPath h3 {
+  text-transform: uppercase;
+  color: var(--primaryText);
+}
+
+.talentPath ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

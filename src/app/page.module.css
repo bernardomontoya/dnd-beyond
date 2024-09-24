@@ -10,3 +10,15 @@
   min-height: 100svh;
   padding: 2rem;
 }
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.talentPaths {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
