@@ -46,12 +46,30 @@ export default function Home() {
       return;
     }
 
-    // Spent or unspent the point
+    // Unspent next talents in the path if they are spent
+    const nextTalentsInPath = talentPath?.talents.slice(talentPositionInPath);
+    const nextTalentsAreSpent = nextTalentsInPath?.some((talent) =>
+      pointsSpent.includes(talent.id)
+    );
+
+    if (nextTalentsAreSpent) {
+      const newTalentIds = pointsSpent.filter(
+        (talentId) =>
+          !nextTalentsInPath?.some((talent) => talent.id === talentId)
+      );
+
+      setPointsSpent(newTalentIds);
+      return;
+    }
+
+    // Unspent the point
     if (isAlreadySpent) {
       setPointsSpent(pointsSpent.filter((talentId) => talentId !== id));
-    } else {
-      setPointsSpent([...pointsSpent, id]);
+      return;
     }
+
+    // Spend the point
+    setPointsSpent([...pointsSpent, id]);
 
     // Clear the error message
     setError("");
