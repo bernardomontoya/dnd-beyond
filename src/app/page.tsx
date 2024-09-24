@@ -91,22 +91,24 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <Header title="TitanStar Legends - Rune Mastery Loadout Talent Calculator 9000" />
-        <div className={styles.talentPaths}>
-          {talentPaths.map((path) => (
-            <Path
-              key={path.id}
-              talentPath={path}
-              pointsSpent={pointsSpent}
-              onPointSpent={handlePointSpent}
-            />
-          ))}
+        <div className={styles.content}>
+          <div className={styles.talentPaths}>
+            {talentPaths.map((path) => (
+              <Path
+                key={path.id}
+                talentPath={path}
+                pointsSpent={pointsSpent}
+                onPointSpent={handlePointSpent}
+              />
+            ))}
+          </div>
+          <Tracker
+            error={error}
+            current={currentPoints}
+            total={totalPoints}
+            label="Points Spent"
+          />
         </div>
-        <Tracker
-          error={error}
-          current={currentPoints}
-          total={totalPoints}
-          label="Points Spent"
-        />
       </main>
     </div>
   );

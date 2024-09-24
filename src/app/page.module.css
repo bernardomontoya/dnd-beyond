@@ -1,24 +1,45 @@
 .page {
   align-items: center;
-  background-image: url("./assets/background.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   display: flex;
   flex-direction: column;
-  justify-items: center;
+  justify-content: center;
   min-height: 100svh;
-  padding: 2rem;
+  height: 100%;
 }
 
 .main {
   display: flex;
   flex-direction: column;
+  gap: 4rem;
+  padding: 2rem;
+  background-image: url("./assets/background.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 1400px;
+  width: auto;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 2rem;
+  align-items: center;
 }
 
 .talentPaths {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+@media (min-width: 768px) {
+  .talentPaths {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .content {
+    grid-template-columns: 1fr 0.2fr;
+  }
 }

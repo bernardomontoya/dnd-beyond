@@ -1,12 +1,14 @@
 .talentPath {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  align-items: center;
   gap: 2rem;
 }
 
 .talentPath h3 {
   text-transform: uppercase;
   color: var(--primaryText);
+  font-size: 1rem;
+  text-align: center;
 }
 
 .talentPath ul {
@@ -17,12 +19,14 @@
 
 .talents {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .connector {
-  height: 16px;
-  width: 100px;
+  height: 60px;
+  width: 16px;
   background: #1b1d1d;
   box-shadow: inset 0 0 4px #474747;
   transition: 0.3s all ease-in-out;
@@ -31,4 +35,23 @@
 .connectorActive {
   background: #2f3132;
   box-shadow: inset 0 0 4px #696a6b;
+}
+
+@media (width > 768px) {
+  .talentPath {
+    grid-template-columns: 0.2fr 1fr;
+  }
+
+  .talentPath h3 {
+    text-align: left;
+  }
+
+  .talents {
+    flex-direction: row;
+  }
+
+  .connector {
+    height: 16px;
+    width: 100px;
+  }
 }
