@@ -6,7 +6,7 @@
   text-align: center;
   background-color: var(--background);
   padding: 1rem;
-  border: 1px solid #292929;
+  border: 1px solid var(--foreground);
 }
 
 .points {
@@ -15,13 +15,13 @@
 }
 
 .label {
-  color: var(--secondaryText);
+  color: var(--primaryText);
   font-size: 1rem;
   transition: 0.1s all ease-in-out;
 }
 
 .labelComplete {
-  color: var(--accent);
+  color: var(--secondaryText);
 }
 
 @media (width > 768px) {

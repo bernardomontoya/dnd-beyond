@@ -25,16 +25,21 @@
 }
 
 .connector {
+  --connectorBackground: #1b1d1d;
+  --connectorShadow: #474747;
+  --connectorActiveBackground: #2f3132;
+  --connectorActiveShadow: #696a6b;
+
   height: 60px;
   width: 16px;
-  background: #1b1d1d;
-  box-shadow: inset 0 0 4px #474747;
+  background: var(--connectorBackground);
+  box-shadow: inset 0 0 4px var(--connectorShadow);
   transition: 0.3s all ease-in-out;
 }
 
 .connectorActive {
-  background: #2f3132;
-  box-shadow: inset 0 0 4px #696a6b;
+  background: var(--connectorActiveBackground);
+  box-shadow: inset 0 0 4px var(--connectorActiveShadow);
 }
 
 @media (width > 768px) {

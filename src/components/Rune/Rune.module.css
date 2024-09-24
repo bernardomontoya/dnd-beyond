@@ -1,4 +1,10 @@
 .rune {
+  --runeBorder: #4b4b4b;
+  --runeBorderShadow: #2d2d2d;
+  --runeBorderActive: var(--accent);
+  --runeBorderHighlight: var(--highlight);
+  --runeShadow: #0b0b0b;
+
   min-width: 58px;
   min-height: 58px;
   display: flex;
@@ -7,26 +13,31 @@
   border: none;
   overflow: hidden;
   cursor: pointer;
-  background: linear-gradient(0deg, #4b4b4b 25%, #2d2d2d 50%, #4b4b4b 50%);
+  background: linear-gradient(
+    0deg,
+    var(--runeBorder) 25%,
+    var(--runeBorderShadow) 50%,
+    var(--runeBorder) 50%
+  );
   border-radius: 2px;
   position: relative;
-  box-shadow: 0 0 8px #0b0b0b;
+  box-shadow: 0 0 8px var(--runeShadow);
   transition: 0.1s all ease-in-out;
 }
 
 .runeActive {
-  box-shadow: 0 0 8px var(--accent);
+  box-shadow: 0 0 8px var(--runeBorderActive);
   background: linear-gradient(
     0deg,
-    var(--accent) 25%,
-    #2d2d2d 50%,
-    var(--accent) 50%
+    var(--runeBorderActive) 25%,
+    var(--runeBorderShadow) 50%,
+    var(--runeBorderActive) 50%
   );
 }
 
 .runeActive:hover,
 .runeActive:focus {
-  box-shadow: 0 0 8px var(--accent);
+  box-shadow: 0 0 8px var(--runeBorderActive);
 }
 
 .runeLocked {
@@ -34,12 +45,12 @@
 }
 
 .runeHighlighted {
-  box-shadow: 0 0 8px var(--highlight);
+  box-shadow: 0 0 8px var(--runeBorderHighlight);
   background: linear-gradient(
     0deg,
-    var(--highlight) 25%,
-    #2d2d2d 50%,
-    var(--highlight) 50%
+    var(--runeBorderHighlight) 25%,
+    var(--runeBorderShadow) 50%,
+    var(--runeBorderHighlight) 50%
   );
 }
 

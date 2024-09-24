@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 import styles from "./Tracker.module.css";
 
 type TrackerProps = {
@@ -13,9 +15,9 @@ export const Tracker = ({ current, label, total }: TrackerProps) => {
     <div className={styles.tracker} role="status" aria-live="polite">
       <span className={styles.points}>{`${current} / ${total}`}</span>
       <span
-        className={`${styles.label} ${
-          isTrackerComplete ? styles.labelComplete : ""
-        }`}
+        className={clsx(styles.label, {
+          [styles.labelComplete]: isTrackerComplete,
+        })}
       >
         {label}
       </span>
