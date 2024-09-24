@@ -11,21 +11,15 @@
 
 .points {
   color: var(--primaryText);
-  font-size: 1.5rem;
+  font-size: var(--text-lg);
 }
 
 .label {
   color: var(--primaryText);
-  font-size: 1rem;
+  font-size: var(--text-md);
   transition: var(--short-transition);
 }
 
 .labelComplete {
   color: var(--secondaryText);
-}
-
-@media (width > 768px) {
-  .points {
-    font-size: 1.5rem;
-  }
 }

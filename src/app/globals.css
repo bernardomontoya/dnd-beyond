@@ -8,6 +8,10 @@
 
   --short-transition: 0.1s all ease-in-out;
   --medium-transition: 0.3s all ease-in-out;
+
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.5rem;
 }
 
 html,

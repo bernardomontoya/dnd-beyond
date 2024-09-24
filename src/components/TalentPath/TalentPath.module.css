@@ -7,7 +7,7 @@
 .talentPath h3 {
   text-transform: uppercase;
   color: var(--primaryText);
-  font-size: 1rem;
+  font-size: var(--text-md);
   text-align: center;
 }
 
