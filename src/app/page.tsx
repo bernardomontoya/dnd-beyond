@@ -3,7 +3,7 @@
 import { useEffect, useState, useMemo, useCallback } from "react";
 import { useRouter } from "next/navigation";
 
-import { Header, Path, Toast, Tracker } from "@/components";
+import { Header, TalentPath, Toast, Tracker } from "@/components";
 import { talentPaths, totalPoints } from "@/consts";
 import { CalculatorErrors } from "@/enums";
 import type { Talent } from "@/types";
@@ -79,7 +79,7 @@ export default function Home() {
   const talentPathElements = useMemo(
     () =>
       talentPaths.map((path) => (
-        <Path
+        <TalentPath
           key={path.id}
           talentPath={path}
           pointsSpent={pointsSpent}

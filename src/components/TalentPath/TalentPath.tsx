@@ -1,16 +1,16 @@
 import { Fragment } from "react";
 
 import { Rune } from "@/components/Rune/Rune";
-import type { Talent, TalentPath } from "@/types";
+import type { Talent, TalentPath as TalentPathType } from "@/types";
 import styles from "./TalentPath.module.css";
 
 type TalentPathProps = {
-  talentPath: TalentPath;
+  talentPath: TalentPathType;
   pointsSpent: Talent["id"][];
   onPointSpent: (args: { talentId: Talent["id"]; isAdding: boolean }) => void;
 };
 
-export const Path = ({
+export const TalentPath = ({
   onPointSpent,
   pointsSpent,
   talentPath,
