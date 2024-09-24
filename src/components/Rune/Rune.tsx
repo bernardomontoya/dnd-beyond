@@ -59,6 +59,7 @@ export const Rune = ({
       onTouchEnd={handleTouchEnd}
       onMouseOver={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
+      title={talent.description}
     >
       <img
         alt={talent.name}
