@@ -7,6 +7,7 @@ import styles from "./Rune.module.css";
 
 type RuneProps = {
   isActive: boolean;
+  isHighlighted: boolean;
   isLocked: boolean;
   talent: Talent;
   onClick: (args: { clickDirection: "right" | "left" }) => void;
@@ -14,7 +15,13 @@ type RuneProps = {
 
 const iconSize = 50;
 
-export const Rune = ({ isActive, isLocked, talent, onClick }: RuneProps) => {
+export const Rune = ({
+  isActive,
+  isHighlighted,
+  isLocked,
+  talent,
+  onClick,
+}: RuneProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const x = talent.spritePosition ? talent.spritePosition * iconSize : 0;
@@ -33,7 +40,7 @@ export const Rune = ({ isActive, isLocked, talent, onClick }: RuneProps) => {
     <button
       className={`${styles.rune} ${isActive ? styles.runeActive : ""} ${
         isLocked ? styles.runeLocked : ""
-      }`}
+      } ${isHighlighted ? styles.runeHighlighted : ""}`}
       onClick={handleLeftClick}
       onContextMenu={handleRightClick}
       onMouseOver={() => setIsHovered(true)}

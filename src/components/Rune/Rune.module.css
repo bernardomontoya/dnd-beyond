@@ -12,13 +12,27 @@
 }
 
 .runeActive {
-  border-color: var(--accent);
   box-shadow: 0 0 8px var(--accent);
-  background: linear-gradient(0deg, #6eabe9 25%, #2d2d2d 50%, #6eabe9 50%);
+  background: linear-gradient(
+    0deg,
+    var(--accent) 25%,
+    #2d2d2d 50%,
+    var(--accent) 50%
+  );
 }
 
 .runeLocked {
   cursor: not-allowed;
+}
+
+.runeHighlighted {
+  box-shadow: 0 0 8px var(--highlight);
+  background: linear-gradient(
+    0deg,
+    var(--highlight) 25%,
+    #2d2d2d 50%,
+    var(--highlight) 50%
+  );
 }
 
 .rune img {

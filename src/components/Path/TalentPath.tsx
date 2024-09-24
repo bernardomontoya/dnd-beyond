@@ -23,11 +23,14 @@ export const Path = ({
           const isPreviousTalentSpent =
             position === 0 ||
             pointsSpent.includes(talentPath.talents[position - 1].id);
+          const isLastTalentActive =
+            position === talentPath.talents.length - 1 && isActive;
 
           return (
             <Fragment key={talent.id}>
               <Rune
                 isActive={isActive}
+                isHighlighted={isLastTalentActive}
                 isLocked={!isPreviousTalentSpent}
                 talent={talent}
                 onClick={({ clickDirection }) =>
