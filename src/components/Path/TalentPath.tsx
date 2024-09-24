@@ -6,7 +6,7 @@ import { Fragment } from "react";
 type TalentPathProps = {
   talentPath: TalentPath;
   pointsSpent: Talent["id"][];
-  onPointSpent: (args: { id: Talent["id"] }) => void;
+  onPointSpent: (args: { talentId: Talent["id"]; isAdding: boolean }) => void;
 };
 
 export const Path = ({
@@ -26,7 +26,12 @@ export const Path = ({
               <Rune
                 isActive={isActive}
                 talent={talent}
-                onClick={() => onPointSpent({ id: talent.id })}
+                onClick={({ clickDirection }) =>
+                  onPointSpent({
+                    talentId: talent.id,
+                    isAdding: clickDirection === "left",
+                  })
+                }
               />
               {position !== talentPath.talents.length - 1 && (
                 <span

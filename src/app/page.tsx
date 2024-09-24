@@ -14,64 +14,66 @@ export default function Home() {
   const [error, setError] = useState<string>("");
   const currentPoints = pointsSpent.length;
 
-  const handlePointSpent = ({ id }: { id: Talent["id"] }) => {
-    // Check if the user has already spent all their points
-    const isAlreadySpent = pointsSpent.includes(id);
+  const handlePointSpent = ({
+    talentId,
+    isAdding,
+  }: {
+    talentId: Talent["id"];
+    isAdding: boolean;
+  }) => {
+    // Check conditions for error states early to return immediately if needed
+    if (isAdding && pointsSpent.includes(talentId)) {
+      setError("You already spent a point here.");
+      return;
+    }
 
-    if (currentPoints === totalPoints && !isAlreadySpent) {
+    if (isAdding && currentPoints === totalPoints) {
       setError("You have already spent all your points.");
       return;
     }
 
-    // Check if the previous talent in the path has been spent
+    // Check if the talent is being added in order
     const talentPath = talentPaths.find((path) =>
-      path.talents.some((talent) => talent.id === id)
+      path.talents.some((talent) => talent.id === talentId)
     );
 
-    const talentPositionInPath = talentPath?.talents.findIndex(
-      (talent) => talent.id === id
+    if (!talentPath) return;
+
+    const talentIndex = talentPath.talents.findIndex(
+      (talent) => talent.id === talentId
     );
-
-    const previousTalent =
-      talentPositionInPath !== undefined
-        ? talentPath?.talents[talentPositionInPath - 1]
-        : undefined;
-
+    const previousTalent = talentPath.talents[talentIndex - 1];
     const isPreviousTalentSpent = previousTalent
       ? pointsSpent.includes(previousTalent.id)
-      : false;
+      : true;
 
-    if (talentPositionInPath !== 0 && !isPreviousTalentSpent) {
+    if (talentIndex !== 0 && !isPreviousTalentSpent) {
       setError("You must spend points in order.");
       return;
     }
 
-    // Unspent next talents in the path if they are spent
-    const nextTalentsInPath = talentPath?.talents.slice(talentPositionInPath);
-    const nextTalentsAreSpent = nextTalentsInPath?.some((talent) =>
+    // Unspend next talents in the path if needed
+    const nextTalents = talentPath.talents.slice(talentIndex);
+    const hasSpentNextTalents = nextTalents.some((talent) =>
       pointsSpent.includes(talent.id)
     );
 
-    if (nextTalentsAreSpent) {
-      const newTalentIds = pointsSpent.filter(
-        (talentId) =>
-          !nextTalentsInPath?.some((talent) => talent.id === talentId)
+    if (hasSpentNextTalents) {
+      setPointsSpent(
+        pointsSpent.filter(
+          (spentId) => !nextTalents.some((talent) => talent.id === spentId)
+        )
       );
-
-      setPointsSpent(newTalentIds);
       return;
     }
 
-    // Unspent the point
-    if (isAlreadySpent) {
-      setPointsSpent(pointsSpent.filter((talentId) => talentId !== id));
-      return;
-    }
+    // Adjust points spent based on adding or removing
+    setPointsSpent(
+      isAdding
+        ? [...pointsSpent, talentId]
+        : pointsSpent.filter((spentId) => spentId !== talentId)
+    );
 
-    // Spend the point
-    setPointsSpent([...pointsSpent, id]);
-
-    // Clear the error message
     setError("");
   };
 

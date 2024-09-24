@@ -8,7 +8,7 @@ import styles from "./Rune.module.css";
 type RuneProps = {
   isActive: boolean;
   talent: Talent;
-  onClick: () => void;
+  onClick: (args: { clickDirection: "right" | "left" }) => void;
 };
 
 const iconSize = 50;
@@ -19,15 +19,24 @@ export const Rune = ({ isActive, talent, onClick }: RuneProps) => {
   const x = talent.spritePosition ? talent.spritePosition * iconSize : 0;
   const y = isActive || isHovered ? 0 : iconSize;
 
+  const handleRightClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    onClick({ clickDirection: "right" });
+  };
+
+  const handleLeftClick = () => {
+    onClick({ clickDirection: "left" });
+  };
+
   return (
     <button
       className={`${styles.rune} ${isActive ? styles.runeActive : ""}`}
-      onClick={onClick}
+      onClick={handleLeftClick}
+      onContextMenu={handleRightClick}
       onMouseOver={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
     >
       <img
-        onClick={onClick}
         alt={talent.name}
         src={icons.src}
         style={{ objectPosition: `-${x}px -${y}px` }}
