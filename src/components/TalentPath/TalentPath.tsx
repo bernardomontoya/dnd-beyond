@@ -1,4 +1,5 @@
-import { Fragment } from "react";
+import clsx from "clsx";
+import { Fragment, useMemo } from "react";
 
 import { Rune } from "@/components/Rune/Rune";
 import type { Talent, TalentPath as TalentPathType } from "@/types";
@@ -11,28 +12,32 @@ type TalentPathProps = {
 };
 
 export const TalentPath = ({
-  onPointSpent,
-  pointsSpent,
   talentPath,
+  pointsSpent,
+  onPointSpent,
 }: TalentPathProps) => {
+  const talents = useMemo(() => talentPath.talents, [talentPath]);
+
+  const isTalentActive = (id: Talent["id"]) => pointsSpent.includes(id);
+  const isTalentUnlocked = (position: number) =>
+    position === 0 || pointsSpent.includes(talentPath.talents[position - 1].id);
+
   return (
     <div className={styles.talentPath}>
       <h3>{talentPath.name}</h3>
       <div className={styles.talents}>
-        {talentPath.talents.map((talent, position) => {
-          const isActive = pointsSpent.includes(talent.id);
-          const isPreviousTalentSpent =
-            position === 0 ||
-            pointsSpent.includes(talentPath.talents[position - 1].id);
+        {talents.map((talent, position) => {
+          const isActive = isTalentActive(talent.id);
+          const isUnlocked = isTalentUnlocked(position);
           const isLastTalentActive =
-            position === talentPath.talents.length - 1 && isActive;
+            position === talents.length - 1 && isActive;
 
           return (
             <Fragment key={talent.id}>
               <Rune
                 isActive={isActive}
                 isHighlighted={isLastTalentActive}
-                isLocked={!isPreviousTalentSpent}
+                isLocked={!isUnlocked}
                 talent={talent}
                 onClick={({ clickDirection }) =>
                   onPointSpent({
@@ -41,11 +46,11 @@ export const TalentPath = ({
                   })
                 }
               />
-              {position !== talentPath.talents.length - 1 && (
+              {position !== talents.length - 1 && (
                 <span
-                  className={`${styles.connector} ${
-                    isActive ? styles.connectorActive : ""
-                  }`}
+                  className={clsx(styles.connector, {
+                    [styles.connectorActive]: isActive,
+                  })}
                 />
               )}
             </Fragment>
