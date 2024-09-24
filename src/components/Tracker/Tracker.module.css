@@ -16,4 +16,9 @@
 .label {
   color: var(--secondaryText);
   font-size: 1rem;
+  transition: 0.1s all ease-in-out;
+}
+
+.labelComplete {
+  color: var(--accent);
 }
