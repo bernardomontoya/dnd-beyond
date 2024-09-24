@@ -52,7 +52,9 @@ export const Rune = ({
     <button
       className={`${styles.rune} ${isActive ? styles.runeActive : ""} ${
         isLocked ? styles.runeLocked : ""
-      } ${isHighlighted ? styles.runeHighlighted : ""}`}
+      } ${isHighlighted ? styles.runeHighlighted : ""} ${
+        isHovered ? styles.runeHovered : ""
+      }`}
       onClick={handleLeftClick}
       onContextMenu={handleRightClick}
       onTouchStart={handleTouchStart}
@@ -60,9 +62,12 @@ export const Rune = ({
       onMouseOver={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
       title={talent.description}
+      aria-label={`Add ${talent.name}`}
+      onFocus={() => setIsHovered(true)}
+      onBlur={() => setIsHovered(false)}
     >
       <img
-        alt={talent.name}
+        alt=""
         src={icons.src}
         style={{ objectPosition: `-${x}px -${y}px` }}
         draggable={false}

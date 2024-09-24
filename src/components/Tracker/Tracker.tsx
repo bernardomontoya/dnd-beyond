@@ -10,7 +10,7 @@ export const Tracker = ({ current, label, total }: TrackerProps) => {
   const isTrackerComplete = current === total;
 
   return (
-    <div className={styles.tracker}>
+    <div className={styles.tracker} role="status" aria-live="polite">
       <span className={styles.points}>{`${current} / ${total}`}</span>
       <span
         className={`${styles.label} ${

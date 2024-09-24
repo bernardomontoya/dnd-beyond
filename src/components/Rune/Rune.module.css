@@ -28,6 +28,12 @@
   cursor: not-allowed;
 }
 
+.runeHovered,
+.rune:focus {
+  box-shadow: 0 0 8px var(--accent);
+  outline: none;
+}
+
 .runeHighlighted {
   box-shadow: 0 0 8px var(--highlight);
   background: linear-gradient(
