@@ -1,0 +1,12 @@
+.page {
+  align-items: center;
+  background-image: url("./assets/background.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  min-height: 100svh;
+  padding: 2rem;
+}
