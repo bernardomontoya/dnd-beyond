@@ -14,7 +14,7 @@ export const Toast = ({ message, onClose }: ToastProps) => {
   }, [onClose]);
 
   return (
-    <div className={styles.toast}>
+    <div className={styles.toast} role="alert">
       <span>{message}</span>
     </div>
   );
