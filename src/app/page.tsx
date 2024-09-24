@@ -34,7 +34,7 @@ export default function Home() {
       searchParams.delete("talents");
     }
     const newUrl = `?${searchParams.toString()}`;
-    router.replace(newUrl);
+    router.replace(newUrl, { scroll: false });
   }, [pointsSpent, router]);
 
   const handlePointSpent = ({
