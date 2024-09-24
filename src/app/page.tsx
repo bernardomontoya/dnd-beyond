@@ -8,6 +8,7 @@ import { Tracker } from "@/components/Tracker/Tracker";
 import { talentPaths, totalPoints } from "@/consts/talents";
 import type { Talent } from "@/types/talents";
 import styles from "./page.module.css";
+import { Toast } from "@/components/Toast/Toast";
 
 export default function Home() {
   const router = useRouter();
@@ -100,16 +101,6 @@ export default function Home() {
     setError("");
   };
 
-  useEffect(() => {
-    if (error) {
-      const timeout = setTimeout(() => {
-        setError("");
-      }, 3000);
-
-      return () => clearTimeout(timeout);
-    }
-  }, [error]);
-
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -126,12 +117,12 @@ export default function Home() {
             ))}
           </div>
           <Tracker
-            error={error}
             current={currentPoints}
             total={totalPoints}
             label="Points Spent"
           />
         </div>
+        {error && <Toast message={error} onClose={() => setError("")} />}
       </main>
     </div>
   );

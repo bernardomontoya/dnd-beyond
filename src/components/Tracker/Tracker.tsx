@@ -4,10 +4,9 @@ type TrackerProps = {
   current: number;
   label: string;
   total: number;
-  error: string;
 };
 
-export const Tracker = ({ current, label, total, error }: TrackerProps) => {
+export const Tracker = ({ current, label, total }: TrackerProps) => {
   const isTrackerComplete = current === total;
 
   return (
@@ -20,7 +19,6 @@ export const Tracker = ({ current, label, total, error }: TrackerProps) => {
       >
         {label}
       </span>
-      {error && <span className={styles.error}>{error}</span>}
     </div>
   );
 };

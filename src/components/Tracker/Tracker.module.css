@@ -24,7 +24,7 @@
   color: var(--accent);
 }
 
-@media (width > 600px) {
+@media (width > 768px) {
   .points {
     font-size: 1.5rem;
   }

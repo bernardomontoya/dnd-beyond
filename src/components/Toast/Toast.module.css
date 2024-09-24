@@ -1,0 +1,32 @@
+.toast {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--errorBackground);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: opacity 0.3s ease-in-out;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  background: var(--foreground);
+  padding: 0.5rem 0.4rem;
+}
+
+.toast span {
+  font-size: 0.8rem;
+}
+
+@media (min-width: 768px) {
+  .toast {
+    width: auto;
+    padding: 0.5rem 1rem;
+    bottom: 2rem;
+  }
+
+  .toast span {
+    font-size: 1rem;
+  }
+}
