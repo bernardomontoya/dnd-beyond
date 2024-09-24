@@ -15,6 +15,7 @@ export default function Home() {
   const currentPoints = pointsSpent.length;
 
   const handlePointSpent = ({ id }: { id: Talent["id"] }) => {
+    // Check if the user has already spent all their points
     const isAlreadySpent = pointsSpent.includes(id);
 
     if (currentPoints === totalPoints && !isAlreadySpent) {
@@ -22,6 +23,30 @@ export default function Home() {
       return;
     }
 
+    // Check if the previous talent in the path has been spent
+    const talentPath = talentPaths.find((path) =>
+      path.talents.some((talent) => talent.id === id)
+    );
+
+    const talentPositionInPath = talentPath?.talents.findIndex(
+      (talent) => talent.id === id
+    );
+
+    const previousTalent =
+      talentPositionInPath !== undefined
+        ? talentPath?.talents[talentPositionInPath - 1]
+        : undefined;
+
+    const isPreviousTalentSpent = previousTalent
+      ? pointsSpent.includes(previousTalent.id)
+      : false;
+
+    if (talentPositionInPath !== 0 && !isPreviousTalentSpent) {
+      setError("You must spend points in order.");
+      return;
+    }
+
+    // Spent or unspent the point
     if (isAlreadySpent) {
       setPointsSpent(pointsSpent.filter((talentId) => talentId !== id));
     } else {
