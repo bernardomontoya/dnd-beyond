@@ -1,22 +1,25 @@
 import { Rune } from "@/components/Rune/Rune";
-import type { TalentPath } from "@/types/talents";
+import type { Talent, TalentPath } from "@/types/talents";
 import styles from "./TalentPath.module.css";
 
 type TalentPathProps = {
   talentPath: TalentPath;
+  onPointSpent: (args: { id: Talent["id"] }) => void;
 };
 
-export const Path = ({ talentPath }: TalentPathProps) => {
+export const Path = ({ onPointSpent, talentPath }: TalentPathProps) => {
   return (
     <div className={styles.talentPath}>
       <h3>{talentPath.name}</h3>
-      <ul>
+      <div>
         {talentPath.talents.map((talent) => (
-          <li key={talent.id}>
-            <Rune talent={talent} />
-          </li>
+          <Rune
+            key={talent.id}
+            talent={talent}
+            onClick={() => onPointSpent({ id: talent.id })}
+          />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

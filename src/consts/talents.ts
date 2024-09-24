@@ -62,3 +62,5 @@ export const talentPaths: TalentPath[] = [
     ],
   },
 ];
+
+export const totalPoints = 6;
