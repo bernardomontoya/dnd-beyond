@@ -36,6 +36,18 @@ export const Rune = ({
     onClick({ clickDirection: "left" });
   };
 
+  const handleTouchStart = () => {
+    if (isActive) {
+      onClick({ clickDirection: "right" });
+    } else {
+      onClick({ clickDirection: "left" });
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+  };
+
   return (
     <button
       className={`${styles.rune} ${isActive ? styles.runeActive : ""} ${
@@ -43,6 +55,8 @@ export const Rune = ({
       } ${isHighlighted ? styles.runeHighlighted : ""}`}
       onClick={handleLeftClick}
       onContextMenu={handleRightClick}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
       onMouseOver={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
     >
