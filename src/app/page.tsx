@@ -3,6 +3,7 @@ import { Header } from "@/components/Header/Header";
 import { Path } from "@/components/Path/TalentPath";
 import { talentPaths } from "@/consts/talents";
 import styles from "./page.module.css";
+import { Tracker } from "@/components/Tracker/Tracker";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
             <Path key={path.id} talentPath={path} />
           ))}
         </div>
+        <Tracker current={0} total={6} label="Points Spent" />
       </main>
     </div>
   );

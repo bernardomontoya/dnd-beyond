@@ -1,0 +1,19 @@
+.tracker {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+  background-color: var(--foregroundAccent);
+  padding: 1rem;
+}
+
+.points {
+  color: var(--primaryText);
+  font-size: 1.2rem;
+}
+
+.label {
+  color: var(--secondaryText);
+  font-size: 1rem;
+}

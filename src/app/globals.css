@@ -1,6 +1,7 @@
 :root {
   --background: #0a0d0e;
   --foreground: #191a1c;
+  --foregroundAccent: #09090a;
   --primaryText: #ffffff;
   --secondaryText: #374e62;
 }
@@ -12,7 +13,7 @@ body {
 }
 
 body {
-  color: var(--foreground);
+  color: var(--primaryText);
   background: var(--background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
