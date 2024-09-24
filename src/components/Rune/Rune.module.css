@@ -17,6 +17,10 @@
   background: linear-gradient(0deg, #6eabe9 25%, #2d2d2d 50%, #6eabe9 50%);
 }
 
+.runeLocked {
+  cursor: not-allowed;
+}
+
 .rune img {
   width: 50px;
   height: 50px;

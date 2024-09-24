@@ -20,11 +20,15 @@ export const Path = ({
       <div className={styles.talents}>
         {talentPath.talents.map((talent, position) => {
           const isActive = pointsSpent.includes(talent.id);
+          const isPreviousTalentSpent =
+            position === 0 ||
+            pointsSpent.includes(talentPath.talents[position - 1].id);
 
           return (
             <Fragment key={talent.id}>
               <Rune
                 isActive={isActive}
+                isLocked={!isPreviousTalentSpent}
                 talent={talent}
                 onClick={({ clickDirection }) =>
                   onPointSpent({
