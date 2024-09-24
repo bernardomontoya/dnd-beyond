@@ -24,14 +24,13 @@
   );
 }
 
-.runeLocked {
-  cursor: not-allowed;
+.runeActive:hover,
+.runeActive:focus {
+  box-shadow: 0 0 8px var(--accent);
 }
 
-.runeHovered,
-.rune:focus {
-  box-shadow: 0 0 8px var(--accent);
-  outline: none;
+.runeLocked {
+  cursor: not-allowed;
 }
 
 .runeHighlighted {

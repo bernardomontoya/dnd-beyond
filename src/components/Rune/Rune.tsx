@@ -36,28 +36,35 @@ export const Rune = ({
     onClick({ clickDirection: "left" });
   };
 
-  const handleTouchStart = () => {
-    if (isActive) {
-      onClick({ clickDirection: "right" });
-    } else {
-      onClick({ clickDirection: "left" });
-    }
+  const handleToggle = () => {
+    onClick({ clickDirection: isActive ? "right" : "left" });
   };
 
   const handleTouchEnd = (e: React.TouchEvent<HTMLButtonElement>) => {
     e.preventDefault();
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      handleToggle();
+    }
+  };
+
+  const handleKeyUp = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+    }
+  };
+
   return (
     <button
       className={`${styles.rune} ${isActive ? styles.runeActive : ""} ${
         isLocked ? styles.runeLocked : ""
-      } ${isHighlighted ? styles.runeHighlighted : ""} ${
-        isHovered ? styles.runeHovered : ""
-      }`}
+      } ${isHighlighted ? styles.runeHighlighted : ""}`}
       onClick={handleLeftClick}
       onContextMenu={handleRightClick}
-      onTouchStart={handleTouchStart}
+      onTouchStart={handleToggle}
       onTouchEnd={handleTouchEnd}
       onMouseOver={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
@@ -65,6 +72,8 @@ export const Rune = ({
       aria-label={`Add ${talent.name}`}
       onFocus={() => setIsHovered(true)}
       onBlur={() => setIsHovered(false)}
+      onKeyDown={handleKeyDown}
+      onKeyUp={handleKeyUp}
     >
       <img
         alt=""
