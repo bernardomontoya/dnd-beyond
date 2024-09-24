@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
-
+import clsx from "clsx";
 import type { Talent } from "@/types";
 import icons from "./assets/icons.png";
 import styles from "./Rune.module.css";
@@ -27,21 +27,17 @@ export const Rune = ({
   const x = talent.spritePosition ? talent.spritePosition * iconSize : 0;
   const y = isActive || isHovered ? 0 : iconSize;
 
-  const handleRightClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    onClick({ clickDirection: "right" });
-  };
-
-  const handleLeftClick = () => {
-    onClick({ clickDirection: "left" });
+  const handleClick = (direction: "right" | "left") => {
+    onClick({ clickDirection: direction });
   };
 
   const handleToggle = () => {
-    onClick({ clickDirection: isActive ? "right" : "left" });
+    handleClick(isActive ? "right" : "left");
   };
 
-  const handleTouchEnd = (e: React.TouchEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const getAriaLabel = () => {
+    if (isLocked) return `${talent.name} is locked`;
+    return isActive ? `Remove ${talent.name}` : `Add ${talent.name}`;
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
@@ -51,29 +47,32 @@ export const Rune = ({
     }
   };
 
-  const handleKeyUp = (e: React.KeyboardEvent<HTMLButtonElement>) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-    }
+  const handleHover = (isHovering: boolean) => {
+    setIsHovered(isHovering);
   };
 
   return (
     <button
-      className={`${styles.rune} ${isActive ? styles.runeActive : ""} ${
-        isLocked ? styles.runeLocked : ""
-      } ${isHighlighted ? styles.runeHighlighted : ""}`}
-      onClick={handleLeftClick}
-      onContextMenu={handleRightClick}
+      className={clsx(styles.rune, {
+        [styles.runeActive]: isActive,
+        [styles.runeLocked]: isLocked,
+        [styles.runeHighlighted]: isHighlighted,
+      })}
+      onClick={() => handleClick("left")}
+      onContextMenu={(e) => {
+        e.preventDefault();
+        handleClick("right");
+      }}
       onTouchStart={handleToggle}
-      onTouchEnd={handleTouchEnd}
-      onMouseOver={() => setIsHovered(true)}
-      onMouseOut={() => setIsHovered(false)}
+      onTouchEnd={(e) => e.preventDefault()}
+      onMouseOver={() => handleHover(true)}
+      onMouseOut={() => handleHover(false)}
+      onFocus={() => handleHover(true)}
+      onBlur={() => handleHover(false)}
       title={talent.description}
-      aria-label={`Add ${talent.name}`}
-      onFocus={() => setIsHovered(true)}
-      onBlur={() => setIsHovered(false)}
+      aria-label={getAriaLabel()}
       onKeyDown={handleKeyDown}
-      onKeyUp={handleKeyUp}
+      onKeyUp={(e) => e.key === "Enter" && e.preventDefault()}
     >
       <img
         alt=""
