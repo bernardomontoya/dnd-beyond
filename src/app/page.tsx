@@ -48,6 +48,7 @@ export default function Home() {
             <Path
               key={path.id}
               talentPath={path}
+              pointsSpent={pointsSpent}
               onPointSpent={handlePointSpent}
             />
           ))}

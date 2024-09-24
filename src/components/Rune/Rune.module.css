@@ -1,4 +1,11 @@
 .rune {
-  color: var(--primaryText);
-  font-size: 0.5rem;
+  display: flex;
+  border: none;
+  overflow: hidden;
+}
+
+.rune img {
+  width: 50px;
+  height: 50px;
+  object-fit: none;
 }

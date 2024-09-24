@@ -4,10 +4,15 @@ import styles from "./TalentPath.module.css";
 
 type TalentPathProps = {
   talentPath: TalentPath;
+  pointsSpent: Talent["id"][];
   onPointSpent: (args: { id: Talent["id"] }) => void;
 };
 
-export const Path = ({ onPointSpent, talentPath }: TalentPathProps) => {
+export const Path = ({
+  onPointSpent,
+  pointsSpent,
+  talentPath,
+}: TalentPathProps) => {
   return (
     <div className={styles.talentPath}>
       <h3>{talentPath.name}</h3>
@@ -15,6 +20,7 @@ export const Path = ({ onPointSpent, talentPath }: TalentPathProps) => {
         {talentPath.talents.map((talent) => (
           <Rune
             key={talent.id}
+            isActive={pointsSpent.includes(talent.id)}
             talent={talent}
             onClick={() => onPointSpent({ id: talent.id })}
           />

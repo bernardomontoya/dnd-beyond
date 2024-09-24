@@ -13,6 +13,7 @@ export type Talent = {
   id: number;
   description: string;
   name: string;
+  spritePosition: number;
   type: TalentType;
 };
 
