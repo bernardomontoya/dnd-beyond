@@ -1,10 +1,20 @@
 .header {
   background: var(--foreground);
-  padding: 1rem 2rem;
+  padding: 0.5rem 0.5rem;
   text-align: center;
 }
 
 .header h1 {
   color: var(--primaryText);
-  font-size: 1.5rem;
+  font-size: 1rem;
+}
+
+@media (width > 600px) {
+  .header {
+    padding: 0.5rem 2rem;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
 }

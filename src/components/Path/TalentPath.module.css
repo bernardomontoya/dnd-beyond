@@ -39,7 +39,7 @@
 
 @media (width > 768px) {
   .talentPath {
-    grid-template-columns: 0.2fr 1fr;
+    grid-template-columns: 0.25fr 1fr;
   }
 
   .talentPath h3 {
@@ -52,6 +52,6 @@
 
   .connector {
     height: 16px;
-    width: 100px;
+    width: 100%;
   }
 }

@@ -6,11 +6,12 @@
   text-align: center;
   background-color: var(--background);
   padding: 1rem;
+  border: 1px solid #292929;
 }
 
 .points {
   color: var(--primaryText);
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 .label {
@@ -21,4 +22,10 @@
 
 .labelComplete {
   color: var(--accent);
+}
+
+@media (width > 600px) {
+  .points {
+    font-size: 1.5rem;
+  }
 }
