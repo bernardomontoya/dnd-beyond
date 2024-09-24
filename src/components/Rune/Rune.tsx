@@ -21,7 +21,7 @@ export const Rune = ({ isActive, talent, onClick }: RuneProps) => {
 
   return (
     <button
-      className={`${styles.rune} ${isActive ? styles.active : ""}`}
+      className={`${styles.rune} ${isActive ? styles.runeActive : ""}`}
       onClick={onClick}
       onMouseOver={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}

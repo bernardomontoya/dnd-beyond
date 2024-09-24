@@ -6,9 +6,12 @@
   background: linear-gradient(0deg, #4b4b4b 25%, #2d2d2d 50%, #4b4b4b 50%);
   padding: 4px;
   border-radius: 2px;
+  position: relative;
+  box-shadow: 0 0 8px #0b0b0b;
+  transition: 0.1s all ease-in-out;
 }
 
-.active {
+.runeActive {
   border-color: var(--accent);
   box-shadow: 0 0 8px var(--accent);
   background: linear-gradient(0deg, #6eabe9 25%, #2d2d2d 50%, #6eabe9 50%);
@@ -18,5 +21,5 @@
   width: 50px;
   height: 50px;
   object-fit: none;
-  transition: 0.1s object-position ease-in-out;
+  transition: 0.1s all ease-in-out;
 }

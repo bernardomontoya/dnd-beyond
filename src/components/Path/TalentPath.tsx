@@ -16,15 +16,28 @@ export const Path = ({
   return (
     <div className={styles.talentPath}>
       <h3>{talentPath.name}</h3>
-      <div>
-        {talentPath.talents.map((talent) => (
-          <Rune
-            key={talent.id}
-            isActive={pointsSpent.includes(talent.id)}
-            talent={talent}
-            onClick={() => onPointSpent({ id: talent.id })}
-          />
-        ))}
+      <div className={styles.talents}>
+        {talentPath.talents.map((talent, position) => {
+          const isActive = pointsSpent.includes(talent.id);
+
+          return (
+            <>
+              <Rune
+                key={talent.id}
+                isActive={isActive}
+                talent={talent}
+                onClick={() => onPointSpent({ id: talent.id })}
+              />
+              {position !== talentPath.talents.length - 1 && (
+                <span
+                  className={`${styles.connector} ${
+                    isActive ? styles.connectorActive : ""
+                  }`}
+                />
+              )}
+            </>
+          );
+        })}
       </div>
     </div>
   );
