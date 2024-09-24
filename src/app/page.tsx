@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
+import { useRouter } from "next/navigation";
 import { Header } from "@/components/Header/Header";
 import { Path } from "@/components/Path/TalentPath";
 import { Tracker } from "@/components/Tracker/Tracker";
@@ -10,9 +10,32 @@ import type { Talent } from "@/types/talents";
 import styles from "./page.module.css";
 
 export default function Home() {
+  const router = useRouter();
   const [pointsSpent, setPointsSpent] = useState<Talent["id"][]>([]);
   const [error, setError] = useState<string>("");
   const currentPoints = pointsSpent.length;
+
+  // Parse the URL to extract the talents from query params
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const talents = searchParams.get("talents");
+    if (talents) {
+      const talentsArray = talents.split(",").map(Number);
+      setPointsSpent(talentsArray);
+    }
+  }, []);
+
+  // Update the URL whenever the pointsSpent state changes
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    if (pointsSpent.length > 0) {
+      searchParams.set("talents", pointsSpent.join(","));
+    } else {
+      searchParams.delete("talents");
+    }
+    const newUrl = `?${searchParams.toString()}`;
+    router.replace(newUrl);
+  }, [pointsSpent, router]);
 
   const handlePointSpent = ({
     talentId,
