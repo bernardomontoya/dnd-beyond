@@ -4,6 +4,9 @@
   --foregroundAccent: #09090a;
   --primaryText: #ffffff;
   --secondaryText: #374e62;
+  --accent: #6facea;
+  --runeConnector: #1b1d1e;
+  --runeConnectorAccent: #313133;
 }
 
 html,
