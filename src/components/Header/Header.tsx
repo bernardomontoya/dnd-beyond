@@ -1,6 +1,6 @@
 import styles from "./Header.module.css";
 
-export type HeaderProps = {
+type HeaderProps = {
   title: string;
 };
 

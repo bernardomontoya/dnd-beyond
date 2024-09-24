@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
 
-import type { Talent } from "@/types/talents";
+import type { Talent } from "@/types";
 import icons from "./assets/icons.png";
 import styles from "./Rune.module.css";
 

@@ -2,13 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Header } from "@/components/Header/Header";
-import { Path } from "@/components/Path/TalentPath";
-import { Tracker } from "@/components/Tracker/Tracker";
-import { talentPaths, totalPoints } from "@/consts/talents";
-import type { Talent } from "@/types/talents";
+
+import { Header, Path, Toast, Tracker } from "@/components";
+import { talentPaths, totalPoints } from "@/consts";
+import type { Talent } from "@/types";
 import styles from "./page.module.css";
-import { Toast } from "@/components/Toast/Toast";
 
 export default function Home() {
   const router = useRouter();

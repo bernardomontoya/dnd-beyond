@@ -1,7 +1,8 @@
-import { Rune } from "@/components/Rune/Rune";
-import type { Talent, TalentPath } from "@/types/talents";
-import styles from "./TalentPath.module.css";
 import { Fragment } from "react";
+
+import { Rune } from "@/components/Rune/Rune";
+import type { Talent, TalentPath } from "@/types";
+import styles from "./TalentPath.module.css";
 
 type TalentPathProps = {
   talentPath: TalentPath;

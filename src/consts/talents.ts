@@ -1,4 +1,4 @@
-import type { Talent, TalentPath } from "@/types/talents";
+import type { Talent, TalentPath } from "@/types";
 
 const foundationTalent: Talent = {
   id: 1,
