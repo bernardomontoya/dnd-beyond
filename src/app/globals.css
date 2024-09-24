@@ -1,4 +1,5 @@
 :root {
+  /* Colors */
   --background: #09090a;
   --foreground: #191a1c;
   --primaryText: #ffffff;
@@ -6,9 +7,11 @@
   --accent: #6facea;
   --highlight: #ff7a00;
 
-  --short-transition: 0.1s all ease-in-out;
-  --medium-transition: 0.3s all ease-in-out;
+  /* Transitions */
+  --transition-sm: 0.1s all ease-in-out;
+  --transition-md: 0.3s all ease-in-out;
 
+  /* Font size */
   --text-sm: 0.875rem;
   --text-md: 1rem;
   --text-lg: 1.5rem;

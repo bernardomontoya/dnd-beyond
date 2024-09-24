@@ -17,7 +17,7 @@
 .label {
   color: var(--primaryText);
   font-size: var(--text-md);
-  transition: var(--short-transition);
+  transition: var(--transition-sm);
 }
 
 .labelComplete {

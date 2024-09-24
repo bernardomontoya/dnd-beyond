@@ -34,7 +34,7 @@
   width: 16px;
   background: var(--connectorBackground);
   box-shadow: inset 0 0 4px var(--connectorShadow);
-  transition: var(--medium-transition);
+  transition: var(--transition-md);
 }
 
 .connectorActive {
