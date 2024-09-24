@@ -1,6 +1,7 @@
 import { Rune } from "@/components/Rune/Rune";
 import type { Talent, TalentPath } from "@/types/talents";
 import styles from "./TalentPath.module.css";
+import { Fragment } from "react";
 
 type TalentPathProps = {
   talentPath: TalentPath;
@@ -21,9 +22,8 @@ export const Path = ({
           const isActive = pointsSpent.includes(talent.id);
 
           return (
-            <>
+            <Fragment key={talent.id}>
               <Rune
-                key={talent.id}
                 isActive={isActive}
                 talent={talent}
                 onClick={() => onPointSpent({ id: talent.id })}
@@ -35,7 +35,7 @@ export const Path = ({
                   }`}
                 />
               )}
-            </>
+            </Fragment>
           );
         })}
       </div>
